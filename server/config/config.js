@@ -1,5 +1,6 @@
 const Constants = require("../utilities/constants");
 const Op = require("sequelize").Op;
+const fs = require("fs");
 
 module.exports = {
     development: {
@@ -18,6 +19,13 @@ module.exports = {
         host: Constants.mysqlHost,
         port: Constants.mysqlPort,
         dialect: "mysql",
-        operatorsAliases: Op
+        operatorsAliases: Op,
+        ssl:true,
+        dialectOptions: {
+            ssl: {
+                encrypt: true,
+                ca: fs.readFileSync(path.resolve(__dirname, "./DigiCertGlobalRootCA.crt.pem"))
+            }
+        }
     }
 }
