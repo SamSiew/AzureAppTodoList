@@ -1,5 +1,6 @@
 const Constants = require("../utilities/constants");
 const Op = require("sequelize").Op;
+const path = require("path");
 const fs = require("fs");
 
 module.exports = {
